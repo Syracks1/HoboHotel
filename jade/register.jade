@@ -21,14 +21,12 @@ html
           li(class='nav-item active')
             a(class='nav-link' href='#') Register
 
-    form(class='form' method='POST')
+    form(class='form ml-5 w-25' method='POST')
+      p(class='h1') Register
       div(class='form-group')
         input(class='form-control mr-sm-2' type='text' name='uname' placeholder='Username')
       div(class='form-group')
         input(class='form-control mr-sm-2' type='text' name='pw' placeholder='Password')
       div(class='form-group')
         input(class='form-control mr-sm-2' type='text' name='pwr' placeholder='Repeat Password')
-      div(class='form-check')
-        label(class='lbl lead mr-2') Are you homeless?
-        input(class='form-control mr-sm-2' type='checkbox' name='homeless' value='Yes')
-      button(type='submit' class='btn btn-primary') Register
+      button(type='submit' name='createaccount' class='btn btn-primary') Register
