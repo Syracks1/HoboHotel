@@ -2,9 +2,12 @@
 
   include '../data/DB.php';
   include '../html/register.html';
+  include '../objects/user/baseUser.php';
+
 
   if(isset($_POST['createaccount']))
   {
+    $newUser = new BaseUser;
     $username = $_POST['uname'];
     $pass = $_POST['pw'];
     $passr = $_POST['pwr'];
@@ -19,7 +22,11 @@
           {
             if($pass == $passr)
             {
-              DB::query('INSERT INTO user VALUES (null, :username, :password, 1)', array(':username'=>$username, ':password'=>password_hash($pass, PASSWORD_BCRYPT)));
+              $newUser->setUserID(NULL);
+              $newUser->setUserName($username);
+              $newUser->setUserPass($pass);
+              $newUser->setUserType(1);
+              DB::query('INSERT INTO user VALUES (null, :username, :password, :userType)', array(':username'=>$newUser->getUserName(), ':password'=>password_hash($newUser->getUserPass(), PASSWORD_BCRYPT), ':userType'=>$newUser->getUserType()));
             }
           }
         }
