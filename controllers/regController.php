@@ -7,7 +7,6 @@
 
   if(isset($_POST['createaccount']))
   {
-    //$newUser = new BaseUser;
     $username = $_POST['uname'];
     $pass = $_POST['pw'];
     $passr = $_POST['pwr'];
@@ -22,10 +21,6 @@
           {
             if($pass == $passr)
             {
-              //$newUser->setUserID(NULL);
-              //$newUser->setUserName($username);
-              //$newUser->setUserPass($pass);
-              //$newUser->setUserType(1);
               DB::query('INSERT INTO user VALUES (null, :username, :password, :userType)', array(':username'=>$username, ':password'=>password_hash($pass, PASSWORD_BCRYPT), ':userType'=>1));
             }
           }
