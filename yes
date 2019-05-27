@@ -1,0 +1,19 @@
+<table class="table table-dark">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Adress</th>
+    <th>City</th>
+    <th>Phone</th>
+  </tr>
+ <?php //foreach ($newListing as $newListing): ?>
+  <tr>
+    <td><?= //$newListing->getID(); ?></td>
+    <td><?= //$newListing->getListName(); ?></td>
+    <td><?= //$newListing->getListAdress(); ?></td>
+    <td><?= //$newListing->getListCity(); ?></td>
+    <td><?= //$newListing->getListPhone(); ?></td>
+  </tr>
+<?php //endforeach; ?>
+
+</table>
