@@ -1,7 +1,7 @@
 <?php
 
   //Insert Controller Stuffs
-  include './clsLogin.php';
+  include './clsLogin.php'; 
   include '../data/DB.php';
   if(!Login::IsLoggedIn())
   {
