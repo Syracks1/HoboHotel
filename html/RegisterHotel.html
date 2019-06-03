@@ -14,21 +14,31 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
-          <li class="nav-item active"><a class="nav-link" href="#">Login</a></li>
+          <li class="nav-item "><a class="nav-link" href="./loginController.php">Login</a></li>
           <li class="nav-item"><a class="nav-link" href="./regController.php">Register</a></li>
-          <li class="nav-item "><a class="nav-link" href="./reghotController.php">RegisterHotel</a></li>
+          <li class="nav-item active"><a class="nav-link" href="#">RegisterHotel</a></li>
         </ul>
       </div>
     </nav>
-    <form class="form ml-5 w-25" method="POST">
-      <p class="h1">Login</p>
-      <div class="form-group">
-        <input class="form-control mr-sm-2" type="text" name="uname" placeholder="Username"/>
+    <<form class="needs-validation" action="index.html" method="post">
+      <div class="form-row">
+    <div class="col-md-2 mb-3">
+      <label for="validationCustom01">Naam</label>
+      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustomUsername">Adres</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Adress" aria-describedby="inputGroupPrepend" required>
       </div>
-      <div class="form-group">
-        <input class="form-control mr-sm-2" type="text" name="pw" placeholder="Password"/>
+    </div>
+    <div class="col-xs-2 mb-3">
+      <label for="validationCustomUsername">Nummer</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
       </div>
-      <button class="btn btn-primary" type="submit" name="login">Login</button>
+    </div>
+  </div>
     </form>
-  </body>
-</html>
+   <head>
+<html>
