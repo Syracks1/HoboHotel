@@ -21,7 +21,7 @@
       $statement = $pdo->prepare($sql);
       $statement->execute();
       $listing = $statement->fetchAll(PDO::FETCH_OBJ);
-      
+
       echo '<table class="table table-dark">
             <tr>
               <th>ID</th>
@@ -42,10 +42,10 @@
         $newListing->setListName($list->Name);
         echo $newListing->getListName();
 
-        echo '</td><td>';
-
-        $newListing->setSpaceID($list->SpaceID);
-        echo $newListing->getSpaceID();
+        // echo '</td><td>';
+        //
+        // $newListing->setSpaceID($list->SpaceID);
+        // echo $newListing->getSpaceID();
 
         echo '</td><td>';
 
