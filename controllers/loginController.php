@@ -1,13 +1,17 @@
 <?php
 
   //Insert Controller Stuffs
-  include './clsLogin.php'; 
+  include './clsLogin.php';
   include '../data/DB.php';
   if(!Login::IsLoggedIn())
   {
     include '../html/login.html';
   }
-  else{echo 'Already Logged In!';}
+  else
+  {
+    //echo 'Already Logged In!';
+    include '../html/loggedin.html';
+  }
   include '../objects/user/baseUser.php';
 
   if(isset($_POST['login']))
