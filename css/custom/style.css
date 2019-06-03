@@ -1,0 +1,8 @@
+.trans {
+  opacity: 0.8; }
+
+.bg-homeless {
+  background-image: url(../../content/img/adult-begging-black-and-white-1058068.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
