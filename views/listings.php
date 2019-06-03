@@ -42,11 +42,6 @@
         $newListing->setListName($list->Name);
         echo $newListing->getListName();
 
-        // echo '</td><td>';
-        //
-        // $newListing->setSpaceID($list->SpaceID);
-        // echo $newListing->getSpaceID();
-
         echo '</td><td>';
 
         $newListing->setListAdress($list->Adress);
