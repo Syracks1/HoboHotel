@@ -8,7 +8,7 @@ html
     script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous")
     
   body
-    nav(class='navbar navbar-toggleable-md navbar-dark bg-dark')
+    nav(class='navbar navbar-toggleable-md navbar-dark bg-dark') 
       button(class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
         span(class='navbar-toggler-icon')
       a(class='navbar-brand' href='#') Navbar
@@ -20,10 +20,12 @@ html
             a(class='nav-link' href='./controllers/loginController.php') Login
           li(class='nav-item')
             a(class='nav-link' href='./controllers/regController.php') Register
+          li(class='nav-item')
+            a(class='nav-link' href='./views/listings.php') Listings
     
     div(class='jumbotron bg-light')
       h1(class='display-3') Login or Register
       p(class='lead') To use our application, you must first register or log in.
       p(class='lead') Please use one of the following buttons.
       a(class='btn btn-primary btn-lg m-2' role='button' href='./controllers/regController.php') Register
-      a(class='btn btn-danger btn-lg m-2' role='button' href='./controllers/loginController.php') Login
+      a(class='btn btn-danger btn-lg m-2' role='button' href='./controllers/loginController.php') Login 
