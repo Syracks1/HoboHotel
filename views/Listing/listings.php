@@ -3,16 +3,16 @@
   <head>
     <title>HoboHotel - Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../css/bootstrap.css"/>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   </head>
   <body>
     <?php
-      require '../data/DB.php';
-      require '../controllers/clsLogin.php';
-      require '../objects/listings/baseListing.php';
+      require '../../data/DB.php';
+      require '../../controllers/clsLogin.php';
+      require '../../objects/listings/baseListing.php';
 
       $newListing = new BaseListing;
 
@@ -32,49 +32,56 @@
                 <li class="nav-item"><a class="nav-link active" href="./views/listings.php">Listings</a></li>
               </ul>
             </div>
-          </nav>
-';
+          </nav>';
+
+      if(Login::IsLoggedIn() == true)
+      {
+        $UserTypeID = DB::query('SELECT UserTypeID FROM user WHERE ID = (SELECT UserID FROM tokens WHERE token=:token)', array(':token'=>sha1($_COOKIE['SNID'])));
+        if($UserTypeID = 2)
+        {
+          echo '<a class="btn btn-primary btn-lg ml-5 mt-5 mb-0" role="button" href="./addListing.php">Add Listing</a>';
+        }
+      }
+
 
 
       echo '<div class="jumbotron bg-light m-4">';
       echo '<table class="table table-dark">
             <tr>
-              <th>ID</th>
               <th>Name</th>
               <th>Adress</th>
               <th>City</th>
-              <th>Phone</th>
-            </tr>
-            ';
+              <th>Phone</th>';
+              if($UserTypeID = 2)
+              {
+                echo '<th>Actions</th>';
+              }
+            echo '</tr>';
       foreach ($listing as $list) {
+        $newListing->buildListing($list->ID, $list->Name, $list->Adress, $list->City, $list->Phone);
         echo '<tr><td>';
 
-        $newListing->setID($list->ID);
-        echo $newListing->getID();
-
-        echo '</td><td>';
-
-        $newListing->setListName($list->Name);
         echo $newListing->getListName();
 
         echo '</td><td>';
 
-        $newListing->setListAdress($list->Adress);
         echo $newListing->getListAdress();
 
         echo '</td><td>';
 
-        $newListing->setListCity($list->City);
         echo $newListing->getListCity();
 
         echo '</td><td>';
 
-        $newListing->setListPhone($list->Phone);
         echo $newListing->getListPhone();
 
-        echo '</td>';
-        echo '</tr>';
-        echo '</div>';
+        echo '</td><td>';
+        if($UserTypeID = 2)
+        {
+          echo '<a class="btn btn-outline-info btn-lg m-1" role="button" href="editListing.php?id=' . $newListing->getID() . ' ">Edit</a>';
+          echo '<a class="btn btn-outline-danger btn-lg m-1" role="button" onclick="return confirm("Are you sure?")" href="deleteListing.php?id=' . $newListing->getID() .'">Delete</a>';
+        }
+        echo '</td></tr></div>';
       }
     ?>
 

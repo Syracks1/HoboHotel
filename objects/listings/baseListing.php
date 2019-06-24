@@ -74,6 +74,16 @@
     {
       return $this->phone;
     }
+
+    // Build Listing
+    public function buildListing($listID, $name, $Adress, $City, $Cell)
+    {
+      $this->id = $listID;
+      $this->name = $name;
+      $this->adress = $Adress;
+      $this->city = $City;
+      $this->phone = $Cell;
+    }
   }
 
 ?>

@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 include '../html/RegisterHotel.html';
 include '../data/DB.php';
@@ -15,7 +14,5 @@ if(isset($_POST['CreateHome']))
     DB::query('INSERT INTO location VALUES (null, :Name, :SpaceId, :Adress, :City, :Phone)', array(':Name'=>$Naam, ':SpaceId'=> 1, ':Adress'=>$Adres, ':City'=>$City, ':Phone'=>$PhoneId));
 }
 
-=======
 include '../html/RegisterHotel.html';
->>>>>>> b9ad9dbcb769422dbdc31cee4173049f130057f1
 ?>

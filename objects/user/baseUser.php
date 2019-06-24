@@ -50,6 +50,15 @@
     {
       return $this->userType;
     }
+
+    // Build User
+    public function buildUser($user, $uname, $pass, $userType)
+    {
+      $this->id = $userid;
+      $this->username = $uname;
+      $this->password = $pass;
+      $this->userType = $userType;
+    }
   }
 
 ?>
