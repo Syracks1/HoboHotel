@@ -27,16 +27,17 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"><a class="nav-link" href="../index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="../controllers/loginController.php">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="../controllers/regController.php">Register</a></li>
-                <li class="nav-item"><a class="nav-link active" href="./views/listings.php">Listings</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../controllers/loginController.php">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../controllers/regController.php">Register</a></li>
+                <li class="nav-item"><a class="nav-link active" href="listings.php">Listings</a></li>
               </ul>
             </div>
           </nav>';
 
       if(Login::IsLoggedIn() == true)
       {
-        $UserTypeID = DB::query('SELECT UserTypeID FROM user WHERE ID = (SELECT UserID FROM tokens WHERE token=:token)', array(':token'=>sha1($_COOKIE['SNID'])));
+        $id = DB::query('SELECT UserID FROM tokens WHERE token=:token', array(':token'=>sha1($_COOKIE['SNID'])));
+        $UserTypeID = DB::query('SELECT UserTypeID FROM user WHERE ID=:id', array(':id'=>$id));
         if($UserTypeID = 2)
         {
           echo '<a class="btn btn-primary btn-lg ml-5 mt-5 mb-0" role="button" href="./addListing.php">Add Listing</a>';
@@ -52,7 +53,7 @@
               <th>Adress</th>
               <th>City</th>
               <th>Phone</th>';
-              if($UserTypeID = 2)
+              if($UserTypeID != null)
               {
                 echo '<th>Actions</th>';
               }
@@ -80,6 +81,12 @@
         {
           echo '<a class="btn btn-outline-info btn-lg m-1" role="button" href="editListing.php?id=' . $newListing->getID() . ' ">Edit</a>';
           echo '<a class="btn btn-outline-danger btn-lg m-1" role="button" onclick="return confirm("Are you sure?")" href="deleteListing.php?id=' . $newListing->getID() .'">Delete</a>';
+          // echo '<a class="btn btn-outline-info btn-lg m-1" role="button" href="reservate.php?id=' . $newListing->getID() . ' ">Reservate</a>';
+
+        }
+        elseif($UserTypeID = 1)
+        {
+          echo '<a class="btn btn-outline-info btn-lg m-1" role="button" href="reservate.php?id=' . $newListing->getID() . ' ">Reservate</a>';
         }
         echo '</td></tr></div>';
       }

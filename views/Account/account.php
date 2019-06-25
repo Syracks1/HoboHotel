@@ -27,7 +27,7 @@
   {
     $sql = 'SELECT * FROM dakloze WHERE ID=(SELECT ID FROM user WHERE ID=$id)';
   }
-  else if($UserTypeID = 2)
+  elseif($UserTypeID = 2)
   {
     $sql = 'SELECT * FROM medewerker WHERE ID=(SELECT ID FROM user WHERE ID = $id)';
   }
